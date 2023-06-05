@@ -34,10 +34,10 @@ function resultadoOperacao() {
     <input type="number">Numéro A
     <input type="number">Número B
     <select>
-      <option value="Adiçãos">Adição</option>
-      <option value="Subtração">Subtração</option>
-      <option value="Multiplicação">Multiplicação</option>
-      <option value="Divisão">Divisão</option>
+        <option onchange="adicao(this.value)">Adição</option>
+        <option value="Subtração">Subtração</option>
+        <option value="Multiplicação">Multiplicação</option>
+        <option value="Divisão">Divisão</option>
     </select>
   </div>
 </template>
