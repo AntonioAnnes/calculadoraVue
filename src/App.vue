@@ -1,50 +1,50 @@
 <script setup>
 import { reactive } from 'vue';
 
-function adicao() {
-  const { numeroA, numeroB } = estado;
-  return numeroA + numeroB;
-}
+function calcular(oper) {
+  var valor1 = document.calcform.valor1.value;
+  var valor2 = document.calcform.valor2.value;
+  if (oper == "somar") {
+    var res = parseInt(valor1) + parseInt(valor2);
+  } else {
+    if (oper == "subtrair") {
+      var res = valor1 - valor2;
+    } else {
+      if (oper == "multiplicar") {
+        var res = valor1 * valor2;
+      } else {
+        var res = valor1 / valor2;
+      }
+    }
+  }
 
-function subtracao() {
-  const { numeroA, numeroB } = estado;
-  return numeroA - numeroB;
-}
-
-function multiplicacao() {
-  const { numeroA, numeroB } = estado;
-  return numeroA * numeroB;
-}
-
-function divisao() {
-  const { numeroA, numeroB } = estado;
-  return numeroA / numeroB;
-}
-
-function resultadoOperacao() {
-
+  document.calcform.res.value = res;
 }
 
 </script>
 
 <template>
-  <div class="container">
-    <h1>Calculadora Aritimética</h1>
-    <h3>Digite os números e veja o resultado aparecer</h3>
-    <input type="number">Numéro A
-    <input type="number">Número B
-    <select>
-        <option onchange="adicao(this.value)">Adição</option>
-        <option value="Subtração">Subtração</option>
-        <option value="Multiplicação">Multiplicação</option>
-        <option value="Divisão">Divisão</option>
+  <form name="calcform" method="post" action="">
+    <h1>Calculadora </h1>
+    <label for="valor1">Digite o valor <strong>1</strong>:</label>
+    <input type="number" name="valor1" id="valor1" />
+    <label for="valor2">Digite o valor <strong>2</strong>:</label>
+    <input type="number" name="valor2" id="valor2" />
+    <label for="oper">Selecione a operação:</label>
+    <select name="oper" id="oper">
+      <option value="somar">Somar</option>
+      <option value="subtrair">Subtrair</option>
+      <option value="multiplicar">Multiplifcar</option>
+      <option value="dividir">Dividir</option>
     </select>
-  </div>
+    <label for="res">Resultado:</label>
+    <input type="text" name="res" id="res" />
+    <input type="button" value="Calcular" class="botao" onClick="calcular(document.calcform.oper.value)" />
+  </form>
 </template>
 
 <style scoped>
 .container {
   text-align: center;
 }
-
 </style>
